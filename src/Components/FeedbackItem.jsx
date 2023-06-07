@@ -1,8 +1,10 @@
 import Card from './Shared/Card'
-import {FaTimes} from 'react-icons/fa'
+import {FaTimes , FaRegHeart, FaHeart} from 'react-icons/fa'
+import { useState } from 'react';
 
 function FeedbackItem({item, handleDelete}){
    
+    const[toggleLike, setToggleLike] = useState(false);
 
     return(
          <Card>
@@ -12,6 +14,14 @@ function FeedbackItem({item, handleDelete}){
                 <FaTimes color='purple'/>
             </button>
             <div className="text-display">{item.text}</div>
+            <div className='like-btn'>
+                {
+                    toggleLike ? (
+                        <FaHeart onClick ={() => setToggleLike(!toggleLike)} color= "purplr" />
+                    ) : ( <FaRegHeart onClick={() => setToggleLike(!toggleLike)} color="purple" />
+
+                    )}
+             </div>
         </Card>
     )
 }
